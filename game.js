@@ -1,5 +1,5 @@
 // Initial Game Setup
-let coinBalance = localStorage.getItem('coinBalance') || 100;
+let coinBalance = parseInt(localStorage.getItem('coinBalance')) || 100;
 let freeSpinsRemaining = 0;
 let currentGameMode = 'base'; // Can be 'base', 'bonus', or 'free-spin'
 const reelSymbols = ['$', '7', '*']; // Symbols for the slot machine reels
@@ -61,4 +61,80 @@ function spinReels() {
     checkWin(reels);
 
     // Trigger question system
-    if (currentGameMode === 'base' && Math
+    if (currentGameMode === 'base' && Math.random() < 0.2) { // 20% chance to trigger a question
+        showQuestion();
+    } else {
+        spinButton.disabled = false; // Re-enable spin button
+    }
+}
+
+function getRandomSymbol() {
+    return reelSymbols[Math.floor(Math.random() * reelSymbols.length)];
+}
+
+function checkWin(reels) {
+    // Placeholder logic to check if the player has won
+    const payoutTable = {
+        '$': 30,
+        '7': 50,
+        '*': 20
+    };
+
+    const symbolCount = {};
+    reels.forEach(symbol => {
+        symbolCount[symbol] = (symbolCount[symbol] || 0) + 1;
+    });
+
+    let winnings = 0;
+    for (const [symbol, count] of Object.entries(symbolCount)) {
+        if (count >= 3) { // Basic payout logic
+            winnings += payoutTable[symbol] || 0;
+        }
+    }
+
+    if (winnings > 0) {
+        coinBalance += winnings;
+        document.getElementById('status-text').innerText = `You won ${winnings} coins!`;
+    } else {
+        document.getElementById('status-text').innerText = "No win this time.";
+    }
+
+    updateCoinBalance();
+}
+
+function updateCoinBalance() {
+    localStorage.setItem('coinBalance', coinBalance);
+    document.getElementById('coin-balance').innerText = coinBalance;
+}
+
+function showQuestion() {
+    const questionSection = document.getElementById('question-section');
+    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+    
+    document.getElementById('question-text').innerText = randomQuestion.text;
+    const choiceButtons = questionSection.querySelectorAll('.choice-button');
+
+    choiceButtons.forEach((button, index) => {
+        button.innerText = randomQuestion.choices[index].text;
+        button.onclick = () => handleChoice(randomQuestion.choices[index].value);
+    });
+
+    questionSection.style.display = 'block';
+}
+
+function handleChoice(diceSides) {
+    document.getElementById('question-section').style.display = 'none';
+    
+    const diceRoll = rollDice(diceSides);
+    document.getElementById('status-text').innerText = `Dice roll: ${diceRoll}`;
+    
+    // Adjust game state based on dice roll
+    // Implement the logic to use dice roll to affect odds or game state here
+
+    spinButton.disabled = false; // Re-enable spin button after choice
+}
+
+function rollDice(sides) {
+    return Math.floor(Math.random() * sides) + 1;
+}
+
