@@ -1,1 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.reel {
+    background-color: #eee;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 2em;
+    padding: 20px;
+    text-align: center;
+}
+
+#spin-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#spin-button:hover {
+    background-color: #0056b3;
+}
+
+.coin-display, .game-status, .dice-result {
+    margin: 10px 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.question-section {
+    margin: 20px 0;
+}
+
+.choice-button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.choice-button:hover {
+    background-color: #ff4500;
+}
 
