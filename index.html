@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murlan the Wizard Slot Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Murlan the Wizard Slot Machine</h1>
+        <div class="coin-display">
+            <p>Coins: <span id="coin-balance">100</span></p>
+        </div>
+
+        <!-- Question Section -->
+        <div class="question-section" id="question-section" style="display: none;">
+            <p id="question-text">You have to reach Murlan, what path do you choose?</p>
+            <button class="choice-button" data-choice="9">Follow the Path</button>
+            <button class="choice-button" data-choice="18">Up the Mountain</button>
+            <button class="choice-button" data-choice="36">Threw the Woods</button>
+        </div>
+
+        <!-- Slot Machine Reel -->
+        <div class="reel-grid" id="reel-grid">
+            <div class="reel" id="reel-1">?</div>
+            <div class="reel" id="reel-2">?</div>
+            <div class="reel" id="reel-3">?</div>
+        </div>
+
+        <!-- Spin Button -->
+        <div class="controls">
+            <button id="spin-button">Spin</button>
+        </div>
+
+        <!-- Dice Roll Result -->
+        <div class="dice-result" id="dice-result">
+            <p>Dice Roll: <span id="dice-roll"></span></p>
+        </div>
+
+        <!-- Game Status -->
+        <div class="game-status">
+            <p id="status-text">Press Spin to play!</p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
 
