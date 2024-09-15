@@ -1,3 +1,4 @@
+/* General styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -7,7 +8,7 @@ body {
 }
 
 .game-container {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -15,6 +16,26 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Pay Table Styling */
+.pay-table {
+    margin-bottom: 20px;
+}
+
+.pay-table h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.pay-table ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pay-table li {
+    font-size: 1.2em;
+}
+
+/* Reel Grid Styling */
 .reel-grid {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -32,6 +53,19 @@ body {
     text-align: center;
 }
 
+.reel[data-symbol="$"] {
+    background-color: #ffcc00;
+}
+
+.reel[data-symbol="7"] {
+    background-color: #ff3333;
+}
+
+.reel[data-symbol="*"] {
+    background-color: #33cc33;
+}
+
+/* Button Styling */
 #spin-button {
     background-color: #007bff;
     color: white;
@@ -44,18 +78,6 @@ body {
 
 #spin-button:hover {
     background-color: #0056b3;
-}
-
-.coin-display, .game-status, .dice-result {
-    margin: 10px 0;
-}
-
-h1 {
-    color: #333;
-}
-
-.question-section {
-    margin: 20px 0;
 }
 
 .choice-button {
@@ -71,3 +93,11 @@ h1 {
     background-color: #ff4500;
 }
 
+/* Miscellaneous Styling */
+.coin-display, .game-status, .dice-result {
+    margin: 10px 0;
+}
+
+h1 {
+    color: #333;
+}
