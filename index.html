@@ -13,19 +13,35 @@
             <p>Coins: <span id="coin-balance">100</span></p>
         </div>
 
+        <!-- Pay Table -->
+        <div class="pay-table">
+            <h2>Pay Table</h2>
+            <ul>
+                <li>3x $ : 30 coins</li>
+                <li>3x 7 : 50 coins</li>
+                <li>3x * : 20 coins</li>
+            </ul>
+        </div>
+
+        <!-- Slot Machine Reel (3x3 Grid) -->
+        <div class="reel-grid" id="reel-grid">
+            <div class="reel" id="reel-1">?</div>
+            <div class="reel" id="reel-2">?</div>
+            <div class="reel" id="reel-3">?</div>
+            <div class="reel" id="reel-4">?</div>
+            <div class="reel" id="reel-5">?</div>
+            <div class="reel" id="reel-6">?</div>
+            <div class="reel" id="reel-7">?</div>
+            <div class="reel" id="reel-8">?</div>
+            <div class="reel" id="reel-9">?</div>
+        </div>
+
         <!-- Question Section -->
         <div class="question-section" id="question-section" style="display: none;">
             <p id="question-text">You have to reach Murlan, what path do you choose?</p>
             <button class="choice-button" data-choice="9">Follow the Path</button>
             <button class="choice-button" data-choice="18">Up the Mountain</button>
             <button class="choice-button" data-choice="36">Threw the Woods</button>
-        </div>
-
-        <!-- Slot Machine Reel -->
-        <div class="reel-grid" id="reel-grid">
-            <div class="reel" id="reel-1">?</div>
-            <div class="reel" id="reel-2">?</div>
-            <div class="reel" id="reel-3">?</div>
         </div>
 
         <!-- Spin Button -->
@@ -35,7 +51,8 @@
 
         <!-- Dice Roll Result -->
         <div class="dice-result" id="dice-result">
-            <p>Dice Roll: <span id="dice-roll"></span></p>
+            <p>Dice Type: <span id="dice-type">N/A</span></p>
+            <p>Dice Roll: <span id="dice-roll">N/A</span></p>
         </div>
 
         <!-- Game Status -->
@@ -47,4 +64,3 @@
     <script src="game.js"></script>
 </body>
 </html>
-
