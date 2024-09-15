@@ -25,6 +25,7 @@
 
         <!-- Slot Machine Reel (3x3 Grid) -->
         <div class="reel-grid" id="reel-grid">
+            <!-- 9 reels in total -->
             <div class="reel" id="reel-1">?</div>
             <div class="reel" id="reel-2">?</div>
             <div class="reel" id="reel-3">?</div>
@@ -38,21 +39,15 @@
 
         <!-- Question Section -->
         <div class="question-section" id="question-section" style="display: none;">
-            <p id="question-text">You have to reach Murlan, what path do you choose?</p>
-            <button class="choice-button" data-choice="9">Follow the Path</button>
-            <button class="choice-button" data-choice="18">Up the Mountain</button>
-            <button class="choice-button" data-choice="36">Threw the Woods</button>
+            <p id="question-text">You encounter a mysterious figure. What do you do?</p>
+            <button class="choice-button" data-choice="1">Ask for Guidance</button>
+            <button class="choice-button" data-choice="2">Challenge to a Duel</button>
+            <button class="choice-button" data-choice="3">Ignore and Move On</button>
         </div>
 
         <!-- Spin Button -->
         <div class="controls">
             <button id="spin-button">Spin</button>
-        </div>
-
-        <!-- Dice Roll Result -->
-        <div class="dice-result" id="dice-result">
-            <p>Dice Type: <span id="dice-type">N/A</span></p>
-            <p>Dice Roll: <span id="dice-roll">N/A</span></p>
         </div>
 
         <!-- Game Status -->
