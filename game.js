@@ -33,18 +33,17 @@ function spinReels() {
         updateCoinBalance();
     }
 
-    // Generate random symbols for the 3 reels
-    const reel1 = getRandomSymbol();
-    const reel2 = getRandomSymbol();
-    const reel3 = getRandomSymbol();
-
-    // Update the reel displays
-    document.getElementById('reel-1').innerText = reel1;
-    document.getElementById('reel-2').innerText = reel2;
-    document.getElementById('reel-3').innerText = reel3;
+    // Generate random symbols for the 9 reels
+    const reels = [];
+    for (let i = 1; i <= 9; i++) {
+        const symbol = getRandomSymbol();
+        reels.push(symbol);
+        document.getElementById(`reel-${i}`).innerText = symbol;
+        document.getElementById(`reel-${i}`).setAttribute('data-symbol', symbol); // Change color
+    }
 
     // Check if the player won
-    checkWin(reel1, reel2, reel3);
+    checkWin(reels);
 
     // Trigger question system
     if (currentGameMode === 'base' && Math.random() < 0.2) { // 20% chance for question
@@ -59,9 +58,21 @@ function getRandomSymbol() {
     return reelSymbols[randomIndex];
 }
 
-function checkWin(r1, r2, r3) {
-    if (r1 === r2 && r2 === r3) {
+function checkWin(reels) {
+    // Simplified winning condition: Any 3 matching symbols in the grid
+    const winningSymbol = reels[0]; // Assume first symbol for this example
+    const allMatch = reels.every(symbol => symbol === winningSymbol);
+
+    if (allMatch) {
         let winAmount = 10;
+        if (winningSymbol === '$') {
+            winAmount = 30;
+        } else if (winningSymbol === '7') {
+            winAmount = 50;
+        } else if (winningSymbol === '*') {
+            winAmount = 20;
+        }
+
         document.getElementById('status-text').innerText = `You won ${winAmount} coins!`;
         coinBalance += winAmount;
         updateCoinBalance();
@@ -82,6 +93,7 @@ function showQuestion() {
 
 function handleChoice(event) {
     const diceType = parseInt(event.target.getAttribute('data-choice'));
+    document.getElementById('dice-type').innerText = diceType; // Display dice type
     rollDice(diceType);
 
     // Hide question section and show spin button again
@@ -102,8 +114,7 @@ function rollDice(diceSides) {
 }
 
 function checkDiceOutcome(diceRolls) {
-    // Simple placeholder logic, can be extended to more complex outcomes
-    const winCondition = diceRolls.every(die => die <= 3); // Example condition: all dice rolls <= 3
+    const winCondition = diceRolls.every(die => die <= 3); // Example condition: all dice <= 3
     if (winCondition) {
         let bonusAmount = 20;
         document.getElementById('status-text').innerText = `Dice win! You won ${bonusAmount} coins!`;
@@ -113,4 +124,3 @@ function checkDiceOutcome(diceRolls) {
         document.getElementById('status-text').innerText = "Dice roll lost. No coins won.";
     }
 }
-
